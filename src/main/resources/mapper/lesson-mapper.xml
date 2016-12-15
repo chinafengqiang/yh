@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LessonMapper">
+    <select id="getLessonList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from lesson_define WHERE (1=1)
+        <if test="DEPT_ID != null">
+            AND DEPT_ID = #{DEPT_ID}
+        </if>
+        <if test="SEARCH!=null">
+            AND NAME LIKE #{SEARCH}
+        </if>
+    </select>
+
+    <select id="getDeptLesson" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from lesson_define WHERE DEPT_ID = #{DEPT_ID} and TERM = #{TERM}
+    </select>
+
+    <select id="getLessonDetail" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from lesson_define_detail WHERE LESSON_ID = #{LESSON_ID}
+    </select>
+
+    <delete id="deleteLessonPlans">
+        <![CDATA[delete from lesson_plans where LESSON_ID = #{lessonId} and START_DATE <= #{date} and END_DATE >= #{date} ]]>
+    </delete>
+
+    <select id="getPlanDetail" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from lesson_plans
+        WHERE LESSON_ID = #{LESSON_ID}
+        AND LESSON_WEEK = #{LESSON_WEEK}
+        AND LESSON_NUM = #{LESSON_NUM}
+        ORDER BY ID DESC
+    </select>
+
+
+    <select id="getLessonPlans" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        <![CDATA[select * from lesson_plans where LESSON_ID = #{lessonId} and START_DATE <= #{date} and END_DATE >= #{date} ]]>
+    </select>
+
+
+    <select id="getPreLessonList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from tbl_pre_lesson WHERE (1=1)
+        <if test="DEPT_ID != null">
+            AND DEPT_ID = #{DEPT_ID}
+        </if>
+        <if test="SEARCH!=null">
+            AND NAME LIKE #{SEARCH}
+        </if>
+    </select>
+
+    <select id="getDeptPreLesson" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from tbl_pre_lesson
+        WHERE DEPT_ID = #{DEPT_ID}
+        <![CDATA[ AND END_DATE >= #{START_DATE} AND END_DATE <= #{END_DATE}]]>
+    </select>
+
+    <select id="getDeptValidPreLesson" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from tbl_pre_lesson
+        WHERE DEPT_ID = #{DEPT_ID}
+        <![CDATA[ AND END_DATE >= #{NOW_DATE}]]>
+    </select>
+
+    <select id="getPreLessonDetail" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select * from tbl_pre_lesson_detail WHERE PRE_ID = #{PRE_ID}
+    </select>
+
+</mapper>
