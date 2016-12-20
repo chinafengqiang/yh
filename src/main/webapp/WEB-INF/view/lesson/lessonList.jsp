@@ -17,7 +17,7 @@
                             <button href="#importModal" data-toggle="modal" type="button" id="add_batch"
                                     class="btn btn-success">导入</button>
                             <button type="button" class="btn btn-danger" onclick="delLesson()">批量删除</button>
-                            <button type="button" class="btn btn-success" onclick="sendLesson()">课程表推送</button>
+                           <!-- <button type="button" class="btn btn-success" onclick="sendLesson()">课程表推送</button>-->
                             <button href="#planModal" data-toggle="modal" type="button" id="import_plan"
                                     class="btn btn-success">导入进度</button>
                             <button type="button" class="btn btn-danger" onclick="delLessonPlan()">删除进度</button>
@@ -35,7 +35,7 @@
                     <th>ID</th>
                     <th>名称</th>
                     <th>学期</th>
-                    <th>状态</th>
+                    <!--<th>状态</th>-->
                     <th>课程表及计划</th>
                 </tr>
                 </thead>
@@ -56,16 +56,7 @@
         {'data':'ID'},
         {'data':'NAME'},
         {'data':'TERM'},
-        {
-            'data':'STATUS',
-            'render':function(data,type,full){
-                if(data == 0){
-                    return '未推送';
-                }else if(data == 1){
-                    return '已推送';
-                }
-            }
-        },
+
         {
             'data':null,
             'render':function(data,type,full){

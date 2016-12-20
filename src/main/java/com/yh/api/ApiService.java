@@ -89,6 +89,8 @@ public class ApiService implements IApi{
                if(clientId.equals(clientIde))
                     return ErrorsFactory.Request_Success;
            }
+           //清楚所有此clientId存在的绑定
+           userService.deletePushBindByClientId(clientId);
            push.put("USER_ID",userId);
            push.put("CLIENT_ID",clientId);
            push.put("ORG_ID",NumUtils.String2Int(params.get("orgId")));
@@ -228,5 +230,10 @@ public class ApiService implements IApi{
            e.printStackTrace();
        }
         return retMap;
+    }
+
+    @Override
+    public List<HashMap<String, Object>> getDeptLessons(int deptId) {
+        return null;
     }
 }

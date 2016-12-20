@@ -50,4 +50,6 @@ public interface IUserService {
     List<String> getDeptUserClientId(int deptId);
 
     int editUserPass(int userId,String pass);
+
+    void deletePushBindByClientId(String clientId);
 }

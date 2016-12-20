@@ -22,4 +22,6 @@ public interface IApi {
     HashMap<String,Object> getLessonPlan(int lessonId, int week, int lessonNum);
 
     HashMap<String,Object> getPreLesson(int userId);
+
+    List<HashMap<String,Object>> getDeptLessons(int deptId);
 }

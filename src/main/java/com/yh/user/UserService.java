@@ -267,4 +267,11 @@ public class UserService implements IUserService{
         params.put("userpass",pass);
         return apiService.editUserPass(params);
     }
+
+    @Override
+    public void deletePushBindByClientId(String clientId) {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("CLIENT_ID",clientId);
+        iacDB.deleteDynamic(DBConstants.TBL_PUSH_BIND_NAME,params);
+    }
 }
