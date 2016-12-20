@@ -235,7 +235,6 @@ public class ApiService implements IApi{
     @Override
     public List<HashMap<String, Object>> getDeptLessons(int deptId) {
 
-
         return null;
     }
 }
