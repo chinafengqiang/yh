@@ -1,6 +1,7 @@
 package com.yh.utils;
 
 public interface AppConstants {
+
     /*
         用户类型
      */
