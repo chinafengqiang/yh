@@ -29,7 +29,7 @@
                 </div>
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <!--<th>ID</th>-->
                     <th>名称</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
@@ -50,7 +50,6 @@
     var table;
     var formValidate;
     var columns = [
-        {'data':'ID'},
         {'data':'NAME'},
         {'data':'START_DATE'},
         {'data':'END_DATE'},

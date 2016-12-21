@@ -10,8 +10,6 @@ import com.yh.utils.ParamUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.management.HotspotMemoryMBean;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

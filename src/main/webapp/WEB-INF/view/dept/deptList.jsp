@@ -27,8 +27,9 @@
                                 </div>
                                 <thead>
                                 <tr>
-                                    <th>年级ID</th>
+                                    <!--<th>年级ID</th>-->
                                     <th>名称</th>
+                                    <th>归属学校</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -46,13 +47,14 @@
     var table;
     var formValidate;
     var columns = [
-        {'data':'ID'},
         {'data':'NAME'},
+        {'data':'ORG_NAME'},
         {
             'data':null,
             'render':function(data,type,full){
                 var btn = "<button  href=\"#editModal\" data-toggle=\"modal\" class=\"btn btn-xs btn-success edit\"><i class=\"icon-pencil\"></i></button></a>&nbsp;&nbsp;&nbsp;&nbsp;" +
                         "<button id=\"del\" class=\"btn btn-xs btn-danger\" onclick=\"delData("+data.ID+")\"><i class=\"icon-remove\"></i> </button>"
+                btn += "<input type=\"hidden\" value='"+data.ID+"'>";
                 return btn;
             }
         }
@@ -87,8 +89,9 @@
 
     $(document).ready(function(){
         $('#table tbody').on('click', '.edit', function () {
-            $("#ID").val(getTbodyValue(this,0));
-            $("#NAME").val(getTbodyValue(this,1));
+            $("#ID").val(getTbodyKeyValue(this,2));
+            $("#orgName").text(getTbodyValue(this,1));
+            $("#NAME").val(getTbodyValue(this,0));
             $("#PK_ORG").val(orgId);
         } );
 

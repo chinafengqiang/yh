@@ -424,6 +424,19 @@ function attachCheckBox(oCheckField,oHiddenField){
     });
 }
 
+
+
+/**
+ * 编辑时获取tbody中主键的值
+ * @param mTbody : 列表所在tbody
+ * @param pos ： 字段在列表中的位置
+ * @returns {*|jQuery}
+ */
+function getTbodyKeyValue(mTbody,pos){
+    var tbEle = $('td', mTbody.parentNode.parentNode).eq(pos);
+    return $(tbEle).find($("input[type='hidden']")).val();
+}
+
 /**
  * 编辑时获取tbody中列表的字段值
  * @param mTbody : 列表所在tbody

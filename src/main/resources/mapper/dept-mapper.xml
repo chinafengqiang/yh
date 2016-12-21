@@ -27,6 +27,18 @@
     </select>
 
 
+    <select id="getOrgDeptList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select d.*,org.NAME AS ORG_NAME from tbl_department d
+        LEFT JOIN tbl_org org ON org.ID = d.PK_ORG
+        WHERE (1=1)
+        <if test="PK_ORG != null">
+            AND d.PK_ORG = #{PK_ORG}
+        </if>
+        <if test="SEARCH!=null">
+            AND d.NAME LIKE #{SEARCH}
+        </if>
+    </select>
+
     <select id="getGroupList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
         select * from tbl_group WHERE (1=1)
         <if test="PK_ORG != null">

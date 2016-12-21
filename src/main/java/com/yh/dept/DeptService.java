@@ -72,7 +72,8 @@ public class DeptService implements IDeptService{
         int orgId = dataModel.getValueAsInt("orgId");
         if(orgId > 0)
             params.put("PK_ORG",orgId);
-        return  iacDB.getDataTables("getDeptList",dataModel.getDataTablesModel(),params);
+        //return  iacDB.getDataTables("getDeptList",dataModel.getDataTablesModel(),params);
+        return  iacDB.getDataTables("getOrgDeptList",dataModel.getDataTablesModel(),params);
     }
 
     public boolean editDept(HashMap<String, String> dept) {

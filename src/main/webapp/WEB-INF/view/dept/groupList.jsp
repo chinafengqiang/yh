@@ -27,7 +27,7 @@
                 </div>
                 <thead>
                 <tr>
-                    <th>分组ID</th>
+                    <!--<th>分组ID</th>-->
                     <th>名称</th>
                     <th>用户</th>
                     <th>操作</th>
@@ -48,7 +48,6 @@
     var table;
     var formValidate;
     var columns = [
-        {'data':'ID'},
         {'data':'NAME'},
         {
             'data':null,
@@ -62,7 +61,8 @@
             'render':function(data,type,full){
                 var btn = "<button  href=\"#editModal\" data-toggle=\"modal\" class=\"btn btn-xs btn-success edit\"><i class=\"icon-pencil\"></i></button></a>&nbsp;&nbsp;&nbsp;&nbsp;" +
                         "<button id=\"del\" class=\"btn btn-xs btn-danger\" onclick=\"delData("+data.ID+")\"><i class=\"icon-remove\"></i> </button>"
-                return btn;
+                btn += "<input type=\"hidden\" value='"+data.ID+"'>";
+               return btn;
             }
         }
     ];
@@ -96,8 +96,8 @@
 
     $(document).ready(function(){
         $('#table tbody').on('click', '.edit', function () {
-            $("#ID").val(getTbodyValue(this,0));
-            $("#NAME").val(getTbodyValue(this,1));
+            $("#ID").val(getTbodyKeyValue(this,2));
+            $("#NAME").val(getTbodyValue(this,0));
             $("#PK_ORG").val(orgId);
             $("#PK_DEPT").val(deptId);
         } );

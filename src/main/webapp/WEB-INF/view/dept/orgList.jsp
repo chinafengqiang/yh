@@ -32,7 +32,7 @@
                                 </div>
                                 <thead>
                                 <tr>
-                                    <th>学校ID</th>
+                                    <!--<th>学校ID</th>-->
                                     <th>名称</th>
                                     <th>操作</th>
                                 </tr>
@@ -57,13 +57,13 @@
     var table;
     var formValidate;
     var columns = [
-        {'data':'ID'},
         {'data':'NAME'},
         {
             'data':null,
             'render':function(data,type,full){
                 var btn = "<button  href=\"#editModal\" data-toggle=\"modal\" class=\"btn btn-xs btn-success edit\"><i class=\"icon-pencil\"></i></button></a>&nbsp;&nbsp;&nbsp;&nbsp;" +
                         "<button id=\"del\" class=\"btn btn-xs btn-danger\" onclick=\"delData("+data.ID+")\"><i class=\"icon-remove\"></i> </button>"
+                    btn += "<input type=\"hidden\" value='"+data.ID+"'>";
                 return btn;
             }
         }
@@ -97,8 +97,8 @@
 
     $(document).ready(function(){
         $('#table tbody').on('click', '.edit', function () {
-            $("#ID").val(getTbodyValue(this,0));
-            $("#NAME").val(getTbodyValue(this,1));
+            $("#ID").val(getTbodyKeyValue(this,1));
+            $("#NAME").val(getTbodyValue(this,0));
         } );
 
         $("#add").click(function(){

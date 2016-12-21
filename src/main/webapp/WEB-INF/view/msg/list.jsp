@@ -34,7 +34,7 @@
                                 </div>
                                 <thead>
                                 <tr>
-                                    <th>通知ID</th>
+                                    <!--<th>通知ID</th>-->
                                     <th>标题</th>
                                     <th>内容</th>
                                     <th>创建时间</th>
@@ -65,7 +65,6 @@
     var formValidate;
     var dic;
     var columns = [
-        {'data':'ID'},
         {'data':'TITLE'},
         {'data':'CONTENT'},
         {'data':'CREATE_TIME'},
@@ -81,6 +80,7 @@
             'render':function(data,type,full){
                 var btn = "<button  href=\"#editModal\" data-toggle=\"modal\" class=\"btn btn-xs btn-success edit\"><i class=\"icon-pencil\"></i></button></a>&nbsp;&nbsp;&nbsp;&nbsp;" +
                         "<button id=\"del\" class=\"btn btn-xs btn-danger\" onclick=\"delData("+data.ID+")\"><i class=\"icon-remove\"></i> </button>"
+                btn += "<input type=\"hidden\" value='"+data.ID+"'>";
                 return btn;
             }
         }
@@ -126,10 +126,10 @@
 
     $(document).ready(function(){
         $('#table tbody').on('click', '.edit', function () {
-            $("#ID").val(getTbodyValue(this,0));
-            $("#TITLE").val(getTbodyValue(this,1));
-            $("#CONTENT").val(getTbodyValue(this,2));
-            var msgTypeText = getTbodyValue(this,4);
+            $("#ID").val(getTbodyKeyValue(this,4));
+            $("#TITLE").val(getTbodyValue(this,0));
+            $("#CONTENT").val(getTbodyValue(this,1));
+            var msgTypeText = getTbodyValue(this,3);
             var msgType = getDicValue(dic,msgTypeText);
             $("#SEND_TYPE").val(msgType);
         } );

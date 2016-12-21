@@ -33,7 +33,7 @@
                                 </div>
                                 <thead>
                                 <tr>
-                                    <th>教师ID</th>
+                                    <!--<th>教师ID</th>-->
                                     <th>用户名</th>
                                     <th>姓名</th>
                                     <th>任教科目</th>
@@ -61,7 +61,6 @@
     var deptId = ${deptId};
     var orgId = ${orgId};
     var columns = [
-        {'data':'ID'},
         {'data':'USERNAME'},
         {'data':'TRUENAME'},
         {
@@ -85,6 +84,7 @@
             'render':function(data,type,full){
                 var btn = "<button  href=\"#labelModal\" data-toggle=\"modal\" class=\"btn btn-xs btn-success edit\"><i class=\"icon-pencil\"></i></button></a>&nbsp;&nbsp;&nbsp;&nbsp;" +
                         "<button id=\"del\" class=\"btn btn-xs btn-danger\" onclick=\"delTearch("+data.ID+")\"><i class=\"icon-remove\"></i> </button>"
+                btn += "<input type=\"hidden\" value='"+data.ID+"'>";
                 return btn;
             }
         }
@@ -133,13 +133,13 @@
 
     $(document).ready(function(){
         $('#table tbody').on('click', '.edit', function () {
-            $("#ID").val(getTbodyValue(this,0));
-            $("#USERNAME").val(getTbodyValue(this,1));
-            $("#TRUENAME").val(getTbodyValue(this,2));
-            var roleText = getTbodyValue(this,3);
+            $("#ID").val(getTbodyKeyValue(this,5));
+            $("#USERNAME").val(getTbodyValue(this,0));
+            $("#TRUENAME").val(getTbodyValue(this,1));
+            var roleText = getTbodyValue(this,2);
             var role = getDicValue(dic,roleText);
             $("#ROLE").val(role);
-            $("#MPHONE").val(getTbodyValue(this,4));
+            $("#MPHONE").val(getTbodyValue(this,3));
             $("#PK_ORG").val(orgId);
             $("#PK_DEPT").val(deptId);
 

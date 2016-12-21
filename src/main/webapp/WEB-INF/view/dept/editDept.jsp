@@ -16,6 +16,10 @@
                         <input type="text" class="form-control" id="PK_ORG" name="PK_ORG">
                     </div>
                     <div class="form-group">
+                        <label>归属学校：</label>
+                        <span id="orgName"></span>
+                    </div>
+                    <div class="form-group">
                         <label>名称：</label>
                         <input type="text" class="form-control" id="NAME" name="NAME" placeholder="请输入年级名称">
                     </div>

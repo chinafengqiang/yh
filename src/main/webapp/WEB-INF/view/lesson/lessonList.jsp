@@ -32,7 +32,7 @@
                 </div>
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <!--<th>ID</th>-->
                     <th>名称</th>
                     <th>学期</th>
                     <!--<th>状态</th>-->
@@ -53,7 +53,6 @@
     var table;
     var formValidate;
     var columns = [
-        {'data':'ID'},
         {'data':'NAME'},
         {'data':'TERM'},
 
@@ -61,6 +60,7 @@
             'data':null,
             'render':function(data,type,full){
                 var btn = "<button href=\"#lessonDetail\" data-toggle=\"modal\" class=\"btn btn-xs btn-info edit\" onclick=\"showDetailList("+data.ID+")\"><i class=\"icon-list\"></i></button>";
+                btn += "<input type=\"hidden\" value='"+data.ID+"'>";
                 return btn;
             }
         }
